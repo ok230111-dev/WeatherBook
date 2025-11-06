@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block title %} {{ city_info.name if city_info else
+"Weather Forecast" }} {% endblock %} {% block content %}
+<h1>
+  5-Day Forecast for {{ city_info.name if city_info else "Unknown City" }}
+</h1>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% elif forecast %}
+<div class="forecast-container">
+  {% for forecast_item in forecast %}
+  <div class="forecast-item">
+    <p><strong>Weather in</strong> {{ forecast_item["city"]}}</p>
+    <p><strong>Country:</strong> {{ forecast_item["country"] }}</p>
+    <p>
+      <strong>Date:</strong> {{ forecast_item["date"] }},
+      {{forecast_item["day"]}}
+    </p>
+    <p><strong>Temperature:</strong> {{ forecast_item["temperature"] }}°C</p>
+    <p><strong>Description:</strong> {{ forecast_item["description"] }}</p>
+    <p><strong>Humidity:</strong> {{ forecast_item["humidity"] }}%</p>
+    <p><strong>Wind Speed:</strong> {{ forecast_item["wind_speed"] }} m/s</p>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p>No forecast data available.</p>
+{% endif %} {% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block title %} WeatherBook {% endblock %} {% block
+content %}
+
+<div class="content-layout">
+  <!-- Ліва колонка з банерами 
+    <aside class="sidebar">
+        <div class="banner_img">
+            <img src="{{ url_for('static', filename='img/santabook.jpg') }}" alt="Santabook - the Feeling of Chrismas" class="img_of_banner">
+            <p class="banner" id="santabook_button">SantaBook - the feeling of Chrismas. Write your wishes to Santa now!</p>
+        </div>
+
+        <div class="banner_img">
+            <img src="{{ url_for('static', filename='img/binary.jpg') }}" alt="Binary Translator - go closer to Computer" class="img_of_banner">
+            <p class="banner" id="binary_translator">Binary Translator - go closer to Computer and start to understand him!</p>
+        </div>
+    </aside>
+    -->
+
+  <!-- Основний контент -->
+  <main class="main-content">
+    <div class="weather-app">
+      <h1>Find out the weather in your city</h1>
+
+      <!-- Форма для отримання погоди для одного міста -->
+      <form method="POST" action="/weather-of-city">
+        <input type="text" name="city" placeholder="Name of city" required />
+        <button type="submit" id="button">Get the weather</button>
+      </form>
+
+      <!-- Форма для отримання 5-дневного прогнозу -->
+      <!--<form method="POST" action = "/forecast">
+                <input type="text" name="city_forecast" placeholder="Name of city" required>
+                <button type="submit" class="forecast-button">View 5-Day Forecast</button>
+            </form>-->
+    </div>
+  </main>
+</div>
+
+{% endblock %}

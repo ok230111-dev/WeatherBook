@@ -1,0 +1,46 @@
+# Віртуальні середовища
+venv/
+env/
+.venv/
+
+# Python кеш
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Flask
+instance/
+.webassets-cache
+
+# Бази даних
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+*.env
+
+# Логи
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Системні файли Windows
+Thumbs.db
+Desktop.ini
+
+# Тимочсові файли
+*.tmp
+*.temp
+.cache/
+
+# Файли пакування
+dist/
+build/
+*.egg-info/

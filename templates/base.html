@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{% block title %} {% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--Icon-->
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='img/final_favicon.ico') }}"
+      type="image/x-icon"
+      class="favicon"
+    />
+  </head>
+  <body>
+    <style>
+      {% block style %}{% endblock %}
+    </style>
+
+    <header class="header">
+      <div class="logo">
+        <a>
+          <img
+            src="{{ url_for('static', filename='img/favicon.ico') }}"
+            alt="Лого"
+            class="header-icon"
+          />
+          WeatherBook
+        </a>
+      </div>
+      <nav class="navigation">
+        <ul>
+          <li>
+            <a
+              href="/"
+              class="{% if request.endpoint == 'index' %}active{% endif %}"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="/find_weather"
+              class="{% if request.endpoint == 'find_weather' %}active{% endif %}"
+              >Find Weather</a
+            >
+          </li>
+          <li>
+            <a
+              id="settings"
+              class="{% if request.endpoint == '' %}active{% endif %}"
+              >Settings</a
+            >
+          </li>
+          <li>
+            <a
+              href="/about"
+              class="{% if request.endpoint == 'about' %}active{% endif %}"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="/about"
+              class="{% if request.endpoint == 'about' %}active{% endif %}"
+              >Our sites</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Burger -->
+      <div class="burger">
+        <span></span>
+      </div>
+    </header>
+
+    <div id="settings-modal" class="modal">
+      <div class="modal-content">
+        <span id="close-modal" class="close-button">&times;</span>
+        <h2>Settings</h2>
+
+        <form class="modal-form">
+          <label for="temperature-unit" class="temperature"
+            >Temperature Unit:</label
+          >
+          <select
+            id="temperature-unit"
+            name="temperature-unit"
+            class="temperature-unit"
+          >
+            <option value="celsius" class="C">°C</option>
+            <option value="fahrenheit" class="F">°F</option>
+          </select>
+
+          <br /><br />
+
+          <label for="wind-speed" class="wind-speed">Speed:</label>
+          <select id="wind-speed" name="wind-speed" class="speed">
+            <option value="m-s" class="M-S">m/s</option>
+            <option value="km-h" class="KM-H">km/h</option>
+            <option value="mp-h" class="MP-H">mph</option>
+          </select>
+
+          <br /><br />
+
+          <label for="language" class="language">Language:</label>
+          <select id="language" name="language" class="language">
+            <option value="en" class="EN">EN</option>
+            <option value="uk" class="UA">UA</option>
+          </select>
+
+          <br /><br />
+        </form>
+
+        <button type="button" class="save-button" id="saveSettings">
+          Save
+        </button>
+      </div>
+    </div>
+
+    <main>{% block content %} {% endblock %}</main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
