@@ -28,6 +28,10 @@ def find_weather():
 def about():
     return render_template('about.html')
 
+@app.route('/other_sites')
+def other_sites():
+    return render_template('other_sites.html')
+
 @app.route('/')
 def index():
     return render_template('index.html')

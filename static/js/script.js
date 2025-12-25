@@ -3,6 +3,10 @@ document.querySelector('.burger').addEventListener('click', function() {
     this.classList.toggle('active'); //коли клік -> появляється active
     document.querySelector('.navigation').classList.toggle('open'); //коли 2 клік -> зникає active
 })
+document.querySelector('.burger_city').addEventListener('click', function() {
+    this.classList.toggle('active'); //коли клік -> появляється active
+    document.querySelector('.navigation').classList.toggle('open'); //коли 2 клік -> зникає active
+})
 
 document.addEventListener('DOMContentLoaded', () => {
     const settingsLink = document.getElementById('settings');
