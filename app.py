@@ -8,7 +8,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0  # Вимкнення кешу дл�
 # Ваш API-ключ із OpenWeatherMap
 API_KEY = "1c022db9e06feb0a70856b7a92165b59"
 
-@app.route('/find_weather', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def find_weather():
     error = None
 
@@ -34,7 +34,7 @@ def other_sites():
 
 # @app.route('/')
 # def index():
-#     return render_template('index.html')      Початкова сторінка вимкнена, бо вона не потрібна
+#     return render_template('index.html')      
 
 @app.route('/forecast', methods=['GET', 'POST'])
 def forecast():
