@@ -32,9 +32,9 @@ def about():
 def other_sites():
     return render_template('other_sites.html')
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+# @app.route('/')
+# def index():
+#     return render_template('index.html')      Початкова сторінка вимкнена, бо вона не потрібна
 
 @app.route('/forecast', methods=['GET', 'POST'])
 def forecast():

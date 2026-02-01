@@ -1,6 +1,29 @@
-{% extends 'base.html' %} {% block title %} About the WeatherBook {% endblock %}
-{% block content %}
-<div class="">
-  
+{% extends 'base.html' %} {% block title %} Recommended Site {% endblock %} {%
+block content %}
+<div
+  class="other_sites_container"
+  style="
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 400px;
+  "
+>
+  <h2 style="margin-top: 0">Check This Blog!</h2>
+  <p style="font-size: 14px; color: #555">
+    We recommend this site for interesting articles and tips:
+  </p>
+  <ul style="padding-left: 20px; font-size: 14px">
+    <li>
+      <a
+        href="https://exampleblog.pythonanywhere.com/"
+        target="_blank"
+        style="color: #0077cc; text-decoration: none"
+      >
+        Example Blog
+      </a>
+    </li>
+  </ul>
 </div>
 {% endblock %}

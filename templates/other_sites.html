@@ -1,13 +1,34 @@
 {% extends 'base.html' %} {% block title %} Our Sites {% endblock %} {% block
 content %}
 <div class="other_sites_container">
-  <h1>Our Sites</h1>
-  <p>Here are some of the sites we recommend:</p>
-  <ul>
-    <li><a href="https://santabook.pythonanywhere.com/">SantaBook</a></li>
-    <li>
-      <a href="https://alexkucheruk.pythonanywhere.com/">Binary Translator</a>
-    </li>
-  </ul>
+  <h1>Our Other Sites</h1>
+
+  <div class="site_block">
+    <a href="https://santabook.pythonanywhere.com/">SantaBook</a>
+    <p>
+      Write your Wishlist to Santa and the site will send that to Santa Claus
+    </p>
+    <h3>Make your Dreams real!</h3>
+  </div>
+
+  <hr style="border: 0; height: 1px; background-color: white; margin: 20px 0" />
+
+  <div class="site_block">
+    <a href="https://alexkucheruk.pythonanywhere.com/">Binary Translator</a>
+    <p>Translate any text to Binary code and back!</p>
+    <h3>Get closer to Computer!</h3>
+  </div>
+
+  <hr style="border: 0; height: 1px; background-color: white; margin: 20px 0" />
+
+  <div class="site_block">
+    <a href="#">Blog about Linguistic</a>
+    <p>
+      Read interesting articles about Linguistic and Ukrainian language! Written
+      by Doctor of Philology Oksana Kucheruk
+    </p>
+    <h3>Expand your knowledge!</h3>
+  </div>
 </div>
+
 {% endblock %}
