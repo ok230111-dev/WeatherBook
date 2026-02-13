@@ -24,25 +24,31 @@
       type="image/x-icon"
       class="favicon"
     />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3531341471559322"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   {% block content %}
 
   <header class="header">
     <div class="logo">
-      <a href="/find_weather">
+      <a href="/">
         <img
           src="{{ url_for('static', filename='img/favicon.ico') }}"
           alt="Лого"
           class="header-icon"
         />
+        WeatherBook
       </a>
     </div>
     <nav class="navigation">
       <ul>
         <li>
           <a
-            href="/find_weather"
+            href="/"
             class="{% if request.endpoint == 'find_weather' %}active{% endif %}"
             >Find Weather</a
           >

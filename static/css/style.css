@@ -11,8 +11,13 @@ body {
     align-items: center;
     height: 100vh;
     text-align: center;
-    overflow-y: auto; /* Дозволяє скролл тільки коли потрібно */
-    overscroll-behavior: none; /* Вимикає ефект overscroll */
+    overflow-y: hidden; /*Дозволяє скролл тільки коли потрібно */
+    overscroll-behavior: none; /*Вимикає ефект overscroll */
+}
+
+main {
+    padding-top: 0px;
+    padding-bottom: 0%;
 }
 
 .weather-app {
