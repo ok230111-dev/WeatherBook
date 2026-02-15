@@ -23,12 +23,12 @@ main {
 .weather-app {
     background: linear-gradient(135deg, #87CEFA, #1E90FF);
     padding: 20px 40px;
-    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     max-width: auto;
     width: auto;
     position: relative;
+    height: auto;
 }
 
 @media (max-height: 730px) {
@@ -58,7 +58,8 @@ main {
         width: 100%;
         margin-top: 15%;
         box-sizing: border-box;
-    }
+        height: auto;
+    } 
     
     /* Зберігаємо всі існуючі стилі, але вирівнюємо ширину */
     .weather-info {
