@@ -267,6 +267,7 @@ main {
     transform: rotate(45deg) translate(0, 50%);
 }
 
+
 /* Для екранів ≥900px показуємо лого */
 @media (min-width: 900px) {
     .header .logo a::after {
