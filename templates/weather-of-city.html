@@ -10,7 +10,7 @@
     </title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
+      href="{{ url_for('static', filename='css/style_weather-of-city.css') }}"
     />
 
     <link
@@ -18,11 +18,27 @@
       rel="stylesheet"
     />
 
+    <!--Icon-->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ url_for('static', filename='img/apple-touch-icon.png') }}"
+    />
     <link
       rel="icon"
-      href="{{ url_for('static', filename='img/final_favicon.ico') }}"
-      type="image/x-icon"
-      class="favicon"
+      type="image/png"
+      sizes="32x32"
+      href="{{ url_for('static', filename='img/favicon-32x32.png') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{{ url_for('static', filename='img/favicon-16x16.png') }}"
+    />
+    <link
+      rel="manifest"
+      href="{{ url_for('static', filename='img/site.webmanifest') }}"
     />
     <script
       async
@@ -83,7 +99,7 @@
     </div>
   </header>
 
-  <div class="weather-app">
+  <div class="weather-app_weather-of-city">
     {% if weather_data %}
     <div class="weather-info">
       <p class="temperature">
@@ -162,6 +178,7 @@
     </div>
     {% endif %}
 
+    <!--FORECAST-->
     <div class="forecast-title">
       <p>Forecast for the next 5 Days</p>
       <span class="forecast-span"></span>
@@ -174,7 +191,7 @@
         {% for forecast_item in forecast_data[1:] %}
         <div class="forecast-item">
           <p>
-            Date:<strong>
+            <strong>
               {{ forecast_item["date"].replace("-", ".") }}, {{
               forecast_item["day"] }}
             </strong>
