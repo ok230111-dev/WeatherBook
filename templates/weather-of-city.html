@@ -200,7 +200,46 @@
             <strong>Temperature:</strong> {{ forecast_item["temperature"] }}°C
           </p>
           <p>
-            <strong>Description:</strong> {{ forecast_item["description"] }}
+            <strong>Description:</strong> {{ forecast_item["description"] }} {%
+            set desc = forecast_item["description"].lower() %} {% if 'rain' in
+            desc %}
+            <img
+              src="{{ url_for('static', filename='icons/rain.png') }}"
+              alt="rain"
+              width="24"
+            />
+            {% elif 'clear' in desc %}
+            <img
+              src="{{ url_for('static', filename='icons/clear.png') }}"
+              alt="clear"
+              width="24"
+            />
+            {% elif 'snow' in desc %}
+            <img
+              src="{{ url_for('static', filename='icons/snow.png') }}"
+              alt="snow"
+              width="24"
+            />
+            {% elif 'sun' in desc %}
+            <img
+              src="{{ url_for('static', filename='icons/sun.png') }}"
+              alt="storm"
+              width="24"
+            />
+            {% elif 'storm' in desc %}
+            <img
+              src="{{ url_for('static', filename='icons/storm.png') }}"
+              alt="storm"
+              width="24"
+            />
+            {% elif 'overcast clouds' in desc or 'few clouds' in desc or '
+            broken clouds' in desc or 'mist' in desc %}
+            <img
+              src="{{ url_for('static', filename='icons/fog.png') }}"
+              alt="fog"
+              width="24"
+            />
+            {% endif %}
           </p>
           <p><strong>Humidity:</strong> {{ forecast_item["humidity"] }}%</p>
           <p>

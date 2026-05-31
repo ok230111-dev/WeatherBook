@@ -33,12 +33,10 @@ main {
     width: auto;
     position: relative;
     height: auto;
+    margin: 0;
 }
 
 @media (max-height: 730px) {
-    .weather-info {
-        margin-top: 30%;
-    }
 
     .weather-app {
         margin-top: 30%;
@@ -64,14 +62,6 @@ main {
         box-sizing: border-box;
         height: auto;
     } 
-    
-    /* Зберігаємо всі існуючі стилі, але вирівнюємо ширину */
-    .weather-info {
-        width: 100% !important; /* Примусово робимо однакову ширину */
-        margin: 0 !important; /* Прибираємо різні відступи */
-        box-sizing: border-box; /* Щоб padding не впливав на ширину */
-        /* Всі інші стилі залишаються незмінними */
-    }
     
     .forecast-info {
         width: 60% !important; /* Примусово робимо однакову ширину 60*/
@@ -128,19 +118,6 @@ main {
 
 .weather-app button:hover, .weather_index button:hover{
     background-color: #ff6600;
-}
-
-.weather-info p {
-    margin: 5px 0;
-    font-size: 1.2rem;
-}
-
-.weather-info {
-    padding: 20px;
-    margin: 20px auto;
-    width: 80%;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .error {
@@ -640,7 +617,7 @@ nav a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: calc(100vh - 200px);  /* Враховуємо висоту header, щоб не було можливості для скролингу */
     padding: 20px;
 }
 

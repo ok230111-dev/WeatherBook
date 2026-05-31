@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100vh; /* Встановлюємо мінімальну висоту для body */
     text-align: center;
     overflow-x: hidden;
     overscroll-behavior: none;
@@ -29,10 +29,9 @@ main {
     padding: 20px 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
-    max-width: auto;
     width: auto;
     position: relative;
-    height: auto;
+    height: calc(100vh - 80px);
     margin: 20px auto;
     border-radius: 10px;
 } 
