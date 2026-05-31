@@ -30,15 +30,7 @@ def about():
 
 @app.route('/other_sites')
 def other_sites():
-    return render_template('other_sites.html')
-
-# @app.route('/')
-# def index():
-#     return render_template('index.html')      
-
-@app.route('/forecast', methods=['GET', 'POST'])
-def forecast():
-    return render_template('forecast.html')
+    return render_template('other_sites.html')     
 
 @app.route('/weather-of-city', methods=['GET', 'POST'])
 def weather():
