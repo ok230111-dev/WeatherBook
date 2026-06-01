@@ -45,163 +45,82 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3531341471559322"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="/">
+          <img
+            src="{{ url_for('static', filename='img/favicon.ico') }}"
+            alt="Лого"
+            class="header-icon"
+          />
+          WeatherBook
+        </a>
+      </div>
+      <nav class="navigation">
+        <ul>
+          <li>
+            <a
+              href="/"
+              class="{% if request.endpoint == 'find_weather' %}active{% endif %}"
+              >Find Weather</a
+            >
+          </li>
+          <li>
+            <a
+              id="settings"
+              class="{% if request.endpoint == 'settings' %}active{% endif %}"
+              >Settings</a
+            >
+          </li>
+          <li>
+            <a
+              href="/about"
+              class="{% if request.endpoint == 'about' %}active{% endif %}"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="/other_sites"
+              class="{% if request.endpoint == 'other_sites' %}active{% endif %}"
+              >Other Sites</a
+            >
+          </li>
+        </ul>
+      </nav>
 
-  {% block content %}
+      <!-- Burger -->
+      <div class="burger">
+        <span></span>
+      </div>
+    </header>
 
-  <header class="header">
-    <div class="logo">
-      <a href="/">
-        <img
-          src="{{ url_for('static', filename='img/favicon.ico') }}"
-          alt="Лого"
-          class="header-icon"
-        />
-        WeatherBook
-      </a>
-    </div>
-    <nav class="navigation">
-      <ul>
-        <li>
-          <a
-            href="/"
-            class="{% if request.endpoint == 'find_weather' %}active{% endif %}"
-            >Find Weather</a
-          >
-        </li>
-        <li>
-          <a
-            id="settings"
-            class="{% if request.endpoint == 'settings' %}active{% endif %}"
-            >Settings</a
-          >
-        </li>
-        <li>
-          <a
-            href="/about"
-            class="{% if request.endpoint == 'about' %}active{% endif %}"
-            >About Us</a
-          >
-        </li>
-        <li>
-          <a
-            href="/other_sites"
-            class="{% if request.endpoint == 'other_sites' %}active{% endif %}"
-            >Other Sites</a
-          >
-        </li>
-      </ul>
-    </nav>
-
-    <!-- Burger -->
-    <div class="burger">
-      <span></span>
-    </div>
-  </header>
-
-  <div class="weather-app_weather-of-city">
-    {% if weather_data %}
-    <div class="weather-info">
-      <p class="temperature">
-        <strong>Weather Today</strong> at {{ weather_data.date }}
-      </p>
-      <p class="temperature">
-        Weather in <strong>{{ weather_data.city }}</strong>
-      </p>
-      <p class="temperature">
-        Country:
-        <strong>{{ weather_data.country }}</strong>
-        <img
-          src="https://flagcdn.com/24x18/{{ weather_data.country | lower }}.png"
-          alt="{{ weather_data.country }}"
-          width="24"
-        />
-      </p>
-      <p class="temperature">
-        Temperature: <strong>{{ weather_data.temperature }}°C</strong>
-      </p>
-      <p class="temperature">
-        Feels like: <strong>{{ weather_data.feels_like }}°C</strong>
-      </p>
-
-      <p class="temperature">
-        Description:
-        <strong>{{ weather_data.description }}</strong>
-
-        {% set desc = weather_data.description.lower() %} {% if 'rain' in desc
-        %}
-        <img
-          src="{{ url_for('static', filename='icons/rain.png') }}"
-          alt="rain"
-          width="24"
-        />
-        {% elif 'clear' in desc %}
-        <img
-          src="{{ url_for('static', filename='icons/clear.png') }}"
-          alt="clear"
-          width="24"
-        />
-        {% elif 'snow' in desc %}
-        <img
-          src="{{ url_for('static', filename='icons/snow.png') }}"
-          alt="snow"
-          width="24"
-        />
-        {% elif 'sun' in desc %}
-        <img
-          src="{{ url_for('static', filename='icons/sun.png') }}"
-          alt="storm"
-          width="24"
-        />
-        {% elif 'storm' in desc %}
-        <img
-          src="{{ url_for('static', filename='icons/storm.png') }}"
-          alt="storm"
-          width="24"
-        />
-        {% elif 'overcast clouds' in desc or 'few clouds' in desc or 'broken
-        clouds' in desc or 'mist' in desc %}
-        <img
-          src="{{ url_for('static', filename='icons/fog.png') }}"
-          alt="fog"
-          width="24"
-        />
-        {% endif %}
-      </p>
-
-      <p class="temperature">
-        Humidity: <strong>{{ weather_data.humidity }}%</strong>
-      </p>
-      <p class="temperature">
-        Wind speed: <strong>{{ weather_data.wind_speed }} m/s</strong>
-      </p>
-    </div>
-    {% endif %}
-
-    <!--FORECAST-->
-    <div class="forecast-title">
-      <p>Forecast for the next 5 Days</p>
-      <span class="forecast-span"></span>
-    </div>
-
-    <div class="forecast-info">
-      {% if forecast_data and forecast_data|length > 1 %}
-      <!-- забираємо 1 -->
-      <div class="forecast-container">
-        {% for forecast_item in forecast_data[1:] %}
-        <div class="forecast-item">
-          <p>
-            <strong>
-              {{ forecast_item["date"].replace("-", ".") }}, {{
-              forecast_item["day"] }}
-            </strong>
+    <div class="weather-app_weather-of-city">
+      {% if weather_data %}
+      <div class="weather-info">
+        <div class="weather-info-weather-of-city">
+          <p class="temperature">
+            <strong class="temperature-city">{{ weather_data.city }}</strong>
+            <img
+              src="https://flagcdn.com/24x18/{{ weather_data.country | lower }}.png"
+              alt="{{ weather_data.country }}"
+              width="24"
+            />
           </p>
-          <p>
-            <strong>Temperature:</strong> {{ forecast_item["temperature"] }}°C
+          <p class="temperature">
+            Now: <strong>{{ weather_data.temperature }}°C</strong>
           </p>
-          <p>
-            <strong>Description:</strong> {{ forecast_item["description"] }} {%
-            set desc = forecast_item["description"].lower() %} {% if 'rain' in
+          <p class="temperature-feels-like">
+            Feels like: <strong>{{ weather_data.feels_like }}°C</strong>
+          </p>
+
+          <p class="temperature">
+            <strong>{{ weather_data.description }}</strong>
+
+            {% set desc = weather_data.description.lower() %} {% if 'rain' in
             desc %}
             <img
               src="{{ url_for('static', filename='icons/rain.png') }}"
@@ -232,8 +151,8 @@
               alt="storm"
               width="24"
             />
-            {% elif 'overcast clouds' in desc or 'few clouds' in desc or '
-            broken clouds' in desc or 'mist' in desc %}
+            {% elif 'overcast clouds' in desc or 'few clouds' in desc or 'broken
+            clouds' in desc or 'mist' in desc or 'scattered clouds' in desc %}
             <img
               src="{{ url_for('static', filename='icons/fog.png') }}"
               alt="fog"
@@ -241,19 +160,108 @@
             />
             {% endif %}
           </p>
-          <p><strong>Humidity:</strong> {{ forecast_item["humidity"] }}%</p>
-          <p>
-            <strong>Wind Speed:</strong> {{ forecast_item["wind_speed"] }} m/s
+
+          <p class="temperature">
+            Humidity: <strong>{{ weather_data.humidity }}%</strong>
+          </p>
+          <p class="temperature">
+            Wind speed: <strong>{{ weather_data.wind_speed }} m/s</strong>
           </p>
         </div>
-        {% endfor %}
+
+        <div class="chart-container">
+          <p class="temperature-hourly">
+            <strong>Hourly Temperatures:</strong>
+          </p>
+          <canvas id="tempChart"></canvas>
+          <p class="temperature">Weather on {{ weather_data.date }}</p>
+        </div>
       </div>
+      {% endif %}
+
+      <!--FORECAST-->
+      <div class="forecast-title">
+        <p>Forecast for the next 5 Days</p>
+        <span class="forecast-span"></span>
+      </div>
+
+      <div class="forecast-info">
+        {% if forecast_data and forecast_data|length > 1 %}
+        <!-- забираємо 1 -->
+        <div class="forecast-container">
+          {% for forecast_item in forecast_data[1:] %}
+          <div class="forecast-item">
+            <p>
+              <strong>
+                {{ forecast_item["date"].replace("-", ".") }}, {{
+                forecast_item["day"] }}
+              </strong>
+            </p>
+            <p>
+              <strong>Temperature:</strong> {{ forecast_item["temperature"] }}°C
+            </p>
+            <p>
+              <strong>Description:</strong> {{ forecast_item["description"] }}
+              {% set desc = forecast_item["description"].lower() %} {% if 'rain'
+              in desc %}
+              <img
+                src="{{ url_for('static', filename='icons/rain.png') }}"
+                alt="rain"
+                width="24"
+              />
+              {% elif 'clear' in desc %}
+              <img
+                src="{{ url_for('static', filename='icons/clear.png') }}"
+                alt="clear"
+                width="24"
+              />
+              {% elif 'snow' in desc %}
+              <img
+                src="{{ url_for('static', filename='icons/snow.png') }}"
+                alt="snow"
+                width="24"
+              />
+              {% elif 'sun' in desc %}
+              <img
+                src="{{ url_for('static', filename='icons/sun.png') }}"
+                alt="storm"
+                width="24"
+              />
+              {% elif 'storm' in desc %}
+              <img
+                src="{{ url_for('static', filename='icons/storm.png') }}"
+                alt="storm"
+                width="24"
+              />
+              {% elif 'overcast clouds' in desc or 'few clouds' in desc or '
+              broken clouds' in desc or 'mist' in desc %}
+              <img
+                src="{{ url_for('static', filename='icons/fog.png') }}"
+                alt="fog"
+                width="24"
+              />
+              {% endif %}
+            </p>
+            <p><strong>Humidity:</strong> {{ forecast_item["humidity"] }}%</p>
+            <p>
+              <strong>Wind Speed:</strong> {{ forecast_item["wind_speed"] }} m/s
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+      <p>No forecast data available.</p>
+      {% endif %} {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
     </div>
-    {% else %}
-    <p>No forecast data available.</p>
-    {% endif %} {% if error %}
-    <p class="error">{{ error }}</p>
-    {% endif %} {% endblock %} {% block style %} {% endblock %}
-  </div>
-  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+      const hourlyTimes = {{ hourly_times|tojson }};
+      const hourlyTemps = {{ hourly_temps|tojson }};
+    </script>
+    <!-- передаємо дані для діаграми З jinja-шаблону Html в js-->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chart_script.js') }}"></script>
+  </body>
 </html>

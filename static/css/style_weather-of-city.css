@@ -1,10 +1,12 @@
 .favicon {
     border-radius: 50% !important; /* Робить круглим */
 }
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #7fccfd, #1e8fff);
+    /* background: linear-gradient(135deg, #7fccfd, #1e8fff); */
+    background: #395877;
     color: white;
     display: flex;
     flex-direction: column;
@@ -27,14 +29,32 @@ main {
 .weather-app_weather-of-city {
     background: #395877;
     padding: 20px 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
     backdrop-filter: blur(10px);
     width: auto;
     position: relative;
     height: calc(100vh - 80px);
     margin: 20px auto;
     border-radius: 10px;
+    align-items: center;
 } 
+
+.chart-container {
+    width: 55%;
+    height: 35%;
+}
+
+.weather-info-weather-of-city {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.temperature-city {
+    font-size: 25px;
+    font-weight: bold;
+}
 
 @media (max-height: 730px) {
     .weather-info {
@@ -85,9 +105,21 @@ main {
     }
 }
 
-.weather-info p {
+.temperature {
     margin: 5px 0;
     font-size: 1.2rem;
+}
+
+.temperature-hourly {
+    font-size: 1.2rem;
+    color: #f0f7fb;
+    margin: 1px 0;
+}
+
+.temperature-feels-like {
+    font-size: 1.0rem;
+    color: #f0f7fb;
+    margin: 1px 0;
 }
 
 .weather-info {
@@ -96,6 +128,10 @@ main {
     width: 80%;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: flex-start;
 }
 
 .error {
