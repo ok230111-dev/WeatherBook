@@ -1,0 +1,290 @@
+/* About page specific styles */
+
+main {
+    padding-top: 4%;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+@media (max-width: 950px) {
+    main {
+        padding-top: 5%;
+    }
+}
+
+.container_about {
+    max-width: auto; 
+    margin: 20px auto 40px; 
+    padding: 40px 35px;
+    background-color: #334c66;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    width: min(100%, 80%); 
+    display: flex;
+    align-items: stretch;
+}
+
+.container_about_left, .container_about_right {
+    flex: 1;
+}
+
+.container_about_center {
+    width: 2px;
+    background-color: white;
+    margin: 0 20px;
+}
+
+@media (max-height: 710px) {
+    .container_about {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+}
+
+@media (max-width: 1300px) {
+    .container_about {
+        max-width: 100%;
+        width: 80%;
+        padding: 5%;
+        padding-top: 2%;
+        margin-top: 0;
+    }
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    color: #bdc3c7;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.features-title, .technologies-title {
+    font-size: 1.8rem;
+    color: #3498db;
+    margin-top: 40px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.features-list {
+    list-style-type: square;
+    margin-left: 20px;
+    font-size: 1.1rem;
+    color: #ecf0f1;
+    text-align: left;
+}
+
+.features-list li {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.tech-description {
+    font-size: 1.2rem;
+    color: #bdc3c7;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+ul, p {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .container_about {
+        width: 94%;
+        min-width: 90%;
+        margin: 0;
+        padding: 3%;
+        padding-top: 3%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .features-title, .technologies-title {
+        font-size: 1.6rem;
+    }
+
+    .features-list li {
+        font-size: 1rem;
+    }
+}
+
+nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+nav a.active {
+    color: #bdc3c7;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #3498db;
+}
+
+
+
+
+
+/* DONATE BUTTON */
+.donate-section, .donate-section-container_about_left {
+    background: linear-gradient(145deg, #ffffff, #f5f7fa);
+    border-radius: 20px;
+    padding: 4%;
+    max-width: 85%;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(0, 48, 135, 0.1);
+    text-align: center;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.donate-title, .donate-title-container_about_left {
+    color: #003087;
+    font-size: 24px;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.qr-container {
+    background: white;
+    padding: 3%;
+    border-radius: 15px;
+    margin: 3% 0;
+    border: 2px dashed #003087;
+}
+
+@media (max-width:560px) {
+    .donate-section {
+        margin-top: 20%;
+        padding: 5%
+    }
+}
+
+@media (min-width: 541px) {
+    .donate-section-container_about_left {
+        display: none;
+    }
+}
+
+@media (max-width: 540px) {
+    .donate-section {
+        display: none;
+    }
+
+    .container_about_center {
+        display: none;
+    }
+
+    .container_about_right {
+        display: none;
+    }
+
+    .container_about_left {
+        margin-top: 4%;
+    }
+}
+
+.qr-container img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    cursor: pointer;
+}
+
+.paypal-button, .paypal-button-container_about_left {
+    background: #003087;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+      transform 0.2s,
+      background 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 2%;
+    width: auto;
+    min-width: 200px;
+}
+
+.paypal-button:hover, .paypal-button-container_about_left:hover {
+    background: #001f5c;
+    transform: translateY(-2px);
+}
+
+.paypal-button:active, .paypal-button-container_about_left:active {
+    transform: translateY(0);
+}
+
+.donate-note, .donate-note-container_about_left {
+    color: #666;
+    font-size: 13px;
+    margin-top: 3%;
+    border-top: 1px solid #eee;
+}
+
+.thank-you-message {
+    display: none;
+    color: #28a745;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 10px;
+    background: #e8f5e9;
+    border-radius: 10px;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+.loading-spinner {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #003087;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+}
+ 
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}

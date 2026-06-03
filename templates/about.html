@@ -1,34 +1,85 @@
-{% extends 'base.html' %} {% block title %} About the WeatherBook {% endblock %}
-{% block content %}
-<div class="container mt-5">
-  <h1 class="page-title">About the WeatherBook</h1>
-  <p class="intro-text">
-    This WeatherBook allows users to check the weather conditions in any city
-    worldwide. With real-time data from trusted weather sources, you can get
-    up-to-date information on temperature, humidity, wind speed, and weather
-    description.
-  </p>
+﻿{% extends 'base.html' %} {% block title %}About the WeatherBook{% endblock %}
+{% block head_links %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/style_about.css') }}"
+/>
+{% endblock %} {% block content %}
+<div class="container_about">
+  <div class="container_about_left">
+    <h1 class="page-title">About the WeatherBook</h1>
+    <p class="intro-text">
+      WeatherBook allows users to check the weather conditions in any city
+      worldwide. With real-time data from trusted weather sources, you can get
+      up-to-date information on temperature, humidity, wind speed, and weather
+      description.
+    </p>
+    <div class="donate-section-container_about_left">
+      <div class="donate-title-container_about_left">Support the project</div>
+      <button
+        id="donate-button-paypal"
+        class="paypal-button-container_about_left"
+      >
+        Donate via PayPal
+      </button>
+      <div id="paypal-donate-container" style="display: none"></div>
+      <div id="thank-you-message" class="thank-you-message">
+        Thank you for your support! ❤️
+      </div>
+      <div id="loading-spinner" class="loading-spinner"></div>
+      <div class="donate-note-container_about_left">
+        Every donation helps improve this site! 🙏
+      </div>
+    </div>
+    <h2 class="features-title">Features</h2>
+    <ul class="features-list">
+      <li>Check the current weather for any city in the world.</li>
+      <li>
+        View detailed information such as temperature, humidity, and wind speed.
+      </li>
+      <li>Get weather descriptions, such as "Clear sky" or "Cloudy".</li>
+      <li>
+        Switch between metric and imperial units for temperature and wind speed.
+      </li>
+      <li>Intuitive interface for easy access to weather information.</li>
+    </ul>
+    <h2 class="technologies-title">Technologies Used</h2>
+    <p class="tech-description">
+      WeatherBook is built using Flask, HTML, CSS, and JavaScript. It fetches
+      real-time weather data from the OpenWeatherMap API, ensuring accurate and
+      up-to-date weather forecasts. WeatherBook is designed to be responsive and
+      accessible across devices, providing a seamless experience for monitoring
+      weather conditions.
+    </p>
+  </div>
 
-  <h2 class="features-title">Features</h2>
-  <ul class="features-list">
-    <li>Check the current weather for any city in the world.</li>
-    <li>
-      View detailed information such as temperature, humidity, and wind speed.
-    </li>
-    <li>Get weather descriptions, such as "Clear sky" or "Cloudy".</li>
-    <li>
-      Switch between metric and imperial units for temperature and wind speed.
-    </li>
-    <li>Intuitive interface for easy access to weather information.</li>
-  </ul>
+  <div class="container_about_center"></div>
 
-  <h2 class="technologies-title">Technologies Used</h2>
-  <p class="tech-description">
-    WeatherBook is built using Flask, HTML, CSS, and JavaScript. It fetches
-    real-time weather data from the OpenWeatherMap API, ensuring accurate and
-    up-to-date weather forecasts. The WeatherBook is designed to be responsive
-    and accessible across devices, providing users with a seamless experience
-    for monitoring weather conditions.
-  </p>
+  <div class="container_about_right">
+    <div class="donate-section">
+      <div class="donate-title">Support the project</div>
+      <div class="qr-container">
+        <img
+          src="{{ url_for('static', filename='img/QR-Code.png') }}"
+          alt="PayPal QR Code"
+          id="qr-code-image"
+          title="Click to open donation page"
+        />
+      </div>
+      <button id="donate-button-paypal" class="paypal-button">
+        Donate via PayPal
+      </button>
+      <div id="paypal-donate-container" style="display: none"></div>
+      <div id="thank-you-message" class="thank-you-message">
+        Thank you for your support! ❤️
+      </div>
+      <div id="loading-spinner" class="loading-spinner"></div>
+      <div class="donate-note">
+        📱 Scan the QR code or click the button above<br />
+        Every donation helps improve this site! 🙏
+      </div>
+    </div>
+  </div>
 </div>
+
 {% endblock %}

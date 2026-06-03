@@ -1,14 +1,22 @@
-//Burger
-document.querySelector('.burger').addEventListener('click', function() {
-    this.classList.toggle('active'); //коли клік -> появляється active
-    document.querySelector('.navigation').classList.toggle('open'); //коли 2 клік -> зникає active
-})
-document.querySelector('.burger_city').addEventListener('click', function() {
-    this.classList.toggle('active'); //коли клік -> появляється active
-    document.querySelector('.navigation').classList.toggle('open'); //коли 2 клік -> зникає active
-})
-
 document.addEventListener('DOMContentLoaded', () => {
+    // Burger menu toggle
+    const burger = document.querySelector('.burger');
+    const burgerCity = document.querySelector('.burger_city');
+
+    if (burger) {
+        burger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.navigation').classList.toggle('open');
+        });
+    }
+
+    if (burgerCity) {
+        burgerCity.addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.navigation').classList.toggle('open');
+        });
+    }
+
     const settingsLink = document.getElementById('settings');
     const closeModal = document.getElementById('close-modal');
     const saveSettingsButton = document.getElementById("saveSettings");
