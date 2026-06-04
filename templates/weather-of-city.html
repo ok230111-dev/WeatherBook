@@ -110,6 +110,7 @@
               width="24"
             />
           </p>
+          <p class="temperature-data-hourly-1">{{ weather_data.date }}</p>
           <p class="temperature">
             Now: <strong>{{ weather_data.temperature }}°C</strong>
           </p>
@@ -174,7 +175,9 @@
             <strong>Hourly Temperatures:</strong>
           </p>
           <canvas id="tempChart"></canvas>
-          <p class="temperature">Weather on {{ weather_data.date }}</p>
+          <p class="temperature-data-hourly-2">
+            Weather on {{ weather_data.date }}
+          </p>
         </div>
       </div>
       {% endif %}
@@ -190,63 +193,6 @@
         <!--- забираємо 1 -->
         <div class="forecast-container">
           {% for forecast_item in forecast_data[1:] %}
-          <!--<div class="forecast-item">
-            <p>
-              <strong>
-                {{ forecast_item["date"].replace("-", ".") }}, {{
-                forecast_item["day"] }}
-              </strong>
-            </p>
-            <p>
-              <strong>Temperature:</strong> {{ forecast_item["temperature"] }}°C
-            </p>
-            <p>
-              <strong>Description:</strong> {{ forecast_item["description"] }}
-              {% set desc = forecast_item["description"].lower() %} {% if 'rain'
-              in desc %}
-              <img
-                src="{{ url_for('static', filename='icons/rain.png') }}"
-                alt="rain"
-                width="24"
-              />
-              {% elif 'clear' in desc %}
-              <img
-                src="{{ url_for('static', filename='icons/clear.png') }}"
-                alt="clear"
-                width="24"
-              />
-              {% elif 'snow' in desc %}
-              <img
-                src="{{ url_for('static', filename='icons/snow.png') }}"
-                alt="snow"
-                width="24"
-              />
-              {% elif 'sun' in desc %}
-              <img
-                src="{{ url_for('static', filename='icons/sun.png') }}"
-                alt="storm"
-                width="24"
-              />
-              {% elif 'storm' in desc %}
-              <img
-                src="{{ url_for('static', filename='icons/storm.png') }}"
-                alt="storm"
-                width="24"
-              />
-              {% elif 'overcast clouds' in desc or 'few clouds' in desc or '
-              broken clouds' in desc or 'mist' in desc %}
-              <img
-                src="{{ url_for('static', filename='icons/fog.png') }}"
-                alt="fog"
-                width="24"
-              />
-              {% endif %}
-            </p>
-            <p><strong>Humidity:</strong> {{ forecast_item["humidity"] }}%</p>
-            <p>
-              <strong>Wind Speed:</strong> {{ forecast_item["wind_speed"] }} m/s
-            </p>
-          </div> -->
 
           <div class="forecast-item">
             <p class="date">{{ forecast_item["date"].replace("-", ".") }}</p>
@@ -254,7 +200,7 @@
 
             <img
               class="weather-icon"
-              src="..."
+              src="{% if 'rain' in forecast_item['description'].lower() %}{{ url_for('static', filename='icons/rain.png') }}{% elif 'clear' in forecast_item['description'].lower() %}{{ url_for('static', filename='icons/clear.png') }}{% elif 'snow' in forecast_item['description'].lower() %}{{ url_for('static', filename='icons/snow.png') }}{% elif 'sun' in forecast_item['description'].lower() %}{{ url_for('static', filename='icons/sun.png') }}{% elif 'storm' in forecast_item['description'].lower() %}{{ url_for('static', filename='icons/storm.png') }}{% elif 'overcast clouds' in forecast_item['description'].lower() or 'few clouds' in forecast_item['description'].lower() or 'broken clouds' in forecast_item['description'].lower() or 'scattered clouds' in forecast_item['description'].lower() or 'mist' in forecast_item['description'].lower() %}{{ url_for('static', filename='icons/fog.png') }}{% else %}{{ url_for('static', filename='icons/default.png') }}{% endif %}"
               alt="{{ forecast_item['description'] }}"
             />
 
