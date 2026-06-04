@@ -1,4 +1,9 @@
 /* Styles moved from style.css specific to other_sites.html */
+
+main {
+	padding-top: 10%;
+}
+
 .other_sites_container {
 	max-width: 800px;
 	margin: auto;

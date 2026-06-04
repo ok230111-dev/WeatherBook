@@ -17,6 +17,129 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+      // Ваш обліковий запис PayPal
+      const PAYPAL_BUTTON_ID = "KMYNUU3WTZU6Q";
+      const PAYPAL_DONATE_URL =
+        "https://www.paypal.com/donate?hosted_button_id=" + PAYPAL_BUTTON_ID;
+      const PAYPAL_EMAIL = "john.sinna@gmail.com"; // для довідки
+
+      // Функція для відкриття PayPal в новому вікні
+      function openPayPalDonation() {
+        const loadingSpinner = document.getElementById("loading-spinner");
+        if (loadingSpinner) {
+          loadingSpinner.style.display = "block";
+        }
+
+        const width = 600;
+        const height = 700;
+        const left = (window.innerWidth - width) / 2;
+        const top = (window.innerHeight - height) / 2;
+
+        window.open(
+          PAYPAL_DONATE_URL,
+          "paypal-donation",
+          `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`,
+        );
+
+        setTimeout(() => {
+          if (loadingSpinner) {
+            loadingSpinner.style.display = "none";
+          }
+        }, 1000);
+
+        setTimeout(() => {
+          showThankYouMessage();
+        }, 2000);
+      }
+
+      // Функція для показу повідомлення подяки
+      function showThankYouMessage() {
+        const message = document.getElementById("thank-you-message");
+        if (message) {
+          message.style.display = "block";
+          setTimeout(() => {
+            message.style.display = "none";
+          }, 5000);
+        }
+      }
+
+      // Функція для ініціалізації оригінальної кнопки PayPal (прихованої)
+      function initPayPalButton() {
+        if (typeof PayPal !== "undefined" && PayPal.Donation) {
+          try {
+            PayPal.Donation.Button({
+              env: "production",
+              hosted_button_id: PAYPAL_BUTTON_ID,
+              style: {
+                label: "donate",
+                size: "responsive",
+                shape: "pill",
+                color: "blue",
+                layout: "vertical",
+              },
+            }).render("#paypal-donate-container");
+
+            console.log("PayPal button initialized successfully");
+          } catch (error) {
+            console.error("Error initializing PayPal button:", error);
+          }
+        } else {
+          console.log("PayPal SDK not loaded yet");
+        }
+      }
+
+      // Ініціалізуємо PayPal та додаємо обробники подій
+      initPayPalButton();
+
+      const donateButtons = document.querySelectorAll('#donate-button-paypal');
+      donateButtons.forEach((button) => {
+        button.addEventListener("click", openPayPalDonation);
+        button.style.opacity = "0";
+        button.style.transform = "translateY(20px)";
+
+        setTimeout(() => {
+          button.style.transition = "all 0.6s";
+          button.style.opacity = "1";
+          button.style.transform = "translateY(0)";
+        }, 200);
+      });
+
+      const qrImages = document.querySelectorAll('#qr-code-image');
+      qrImages.forEach((qrImage) => {
+        qrImage.addEventListener("click", openPayPalDonation);
+      });
+
+      // Додаємо підтримку клавіатури для доступності
+      document.addEventListener("keydown", function (event) {
+        if ((event.key === "d" || event.key === "D") && event.altKey) {
+          openPayPalDonation();
+        }
+      });
+
+      // Функція для відстеження успішного донату
+      window.addEventListener("message", function (event) {
+        if (event.origin.includes("paypal.com")) {
+          if (event.data && event.data.type === "donation_complete") {
+            showThankYouMessage();
+
+            if (typeof gtag !== "undefined") {
+              gtag("event", "donation", {
+                event_category: "engagement",
+                event_label: "paypal_donation",
+              });
+            }
+          }
+        }
+      });
+
+      // Обробка помилок
+      window.onerror = function (msg, url, lineNo, columnNo, error) {
+        console.error("Error: ", msg);
+        return false;
+      };
+
+
     const settingsLink = document.getElementById('settings');
     const closeModal = document.getElementById('close-modal');
     const saveSettingsButton = document.getElementById("saveSettings");

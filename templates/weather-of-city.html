@@ -187,10 +187,10 @@
 
       <div class="forecast-info">
         {% if forecast_data and forecast_data|length > 1 %}
-        <!-- забираємо 1 -->
+        <!--- забираємо 1 -->
         <div class="forecast-container">
           {% for forecast_item in forecast_data[1:] %}
-          <div class="forecast-item">
+          <!--<div class="forecast-item">
             <p>
               <strong>
                 {{ forecast_item["date"].replace("-", ".") }}, {{
@@ -246,6 +246,33 @@
             <p>
               <strong>Wind Speed:</strong> {{ forecast_item["wind_speed"] }} m/s
             </p>
+          </div> -->
+
+          <div class="forecast-item">
+            <p class="date">{{ forecast_item["date"].replace("-", ".") }}</p>
+            <p class="day-name">{{ forecast_item["day"] }}</p>
+
+            <img
+              class="weather-icon"
+              src="..."
+              alt="{{ forecast_item['description'] }}"
+            />
+
+            <p class="temperature">{{ forecast_item["temperature"] }}°C</p>
+            <p class="description">{{ forecast_item["description"] }}</p>
+
+            <hr class="divider" />
+
+            <div class="stats">
+              <div class="stat-row">
+                <span>Humidity</span>
+                <strong>{{ forecast_item["humidity"] }}%</strong>
+              </div>
+              <div class="stat-row">
+                <span>Wind</span>
+                <strong>{{ forecast_item["wind_speed"] }} m/s</strong>
+              </div>
+            </div>
           </div>
           {% endfor %}
         </div>
