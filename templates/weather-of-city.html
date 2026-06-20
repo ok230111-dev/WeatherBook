@@ -110,63 +110,26 @@
               width="24"
             />
           </p>
-          <p class="temperature-data-hourly-1">{{ weather_data.date }}</p>
-          <p class="temperature">
-            Now: <strong>{{ weather_data.temperature }}°C</strong>
+
+          <img
+            src="{% if 'rain' in weather_data['description'].lower() %}{{ url_for('static', filename='icons/rain.png') }}{% elif 'clear' in weather_data['description'].lower() %}{{ url_for('static', filename='icons/clear.png') }}{% elif 'snow' in weather_data['description'].lower() %}{{ url_for('static', filename='icons/snow.png') }}{% elif 'sun' in weather_data['description'].lower() %}{{ url_for('static', filename='icons/sun.png') }}{% elif 'storm' in weather_data['description'].lower() %}{{ url_for('static', filename='icons/storm.png') }}{% elif 'overcast clouds' in weather_data['description'].lower() or 'few clouds' in weather_data['description'].lower() or 'broken clouds' in weather_data['description'].lower() or 'scattered clouds' in weather_data['description'].lower() or 'mist' in weather_data['description'].lower() %}{{ url_for('static', filename='icons/fog.png') }}{% else %}{{ url_for('static', filename='icons/default.png') }}{% endif %}"
+            alt="{{ weather_data['description'] }}"
+            class="weather-icon"
+          />
+          <p class="temperature-of-celcius">
+            <strong>{{ weather_data.temperature }}°C</strong>
           </p>
           <p class="temperature-feels-like">
-            Feels like: <strong>{{ weather_data.feels_like }}°C</strong>
+            Feels like: {{ weather_data.feels_like }}°C
           </p>
 
-          <p class="temperature">
+          <p class="temperature-description-weather-info">
             <strong>{{ weather_data.description }}</strong>
-
-            {% set desc = weather_data.description.lower() %} {% if 'rain' in
-            desc %}
-            <img
-              src="{{ url_for('static', filename='icons/rain.png') }}"
-              alt="rain"
-              width="24"
-            />
-            {% elif 'clear' in desc %}
-            <img
-              src="{{ url_for('static', filename='icons/clear.png') }}"
-              alt="clear"
-              width="24"
-            />
-            {% elif 'snow' in desc %}
-            <img
-              src="{{ url_for('static', filename='icons/snow.png') }}"
-              alt="snow"
-              width="24"
-            />
-            {% elif 'sun' in desc %}
-            <img
-              src="{{ url_for('static', filename='icons/sun.png') }}"
-              alt="storm"
-              width="24"
-            />
-            {% elif 'storm' in desc %}
-            <img
-              src="{{ url_for('static', filename='icons/storm.png') }}"
-              alt="storm"
-              width="24"
-            />
-            {% elif 'overcast clouds' in desc or 'few clouds' in desc or 'broken
-            clouds' in desc or 'mist' in desc or 'scattered clouds' in desc %}
-            <img
-              src="{{ url_for('static', filename='icons/fog.png') }}"
-              alt="fog"
-              width="24"
-            />
-            {% endif %}
           </p>
 
+          <p class="temperature">Humidity: {{ weather_data.humidity }}%</p>
           <p class="temperature">
-            Humidity: <strong>{{ weather_data.humidity }}%</strong>
-          </p>
-          <p class="temperature">
-            Wind speed: <strong>{{ weather_data.wind_speed }} m/s</strong>
+            Wind speed: {{ weather_data.wind_speed }} m/s
           </p>
         </div>
 
@@ -176,7 +139,7 @@
           </p>
           <canvas id="tempChart"></canvas>
           <p class="temperature-data-hourly-2">
-            Weather on {{ weather_data.date }}
+            Today, {{ weather_data.day }}, {{ weather_data.date }}
           </p>
         </div>
       </div>

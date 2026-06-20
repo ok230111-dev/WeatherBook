@@ -46,7 +46,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 .temperature-city {
@@ -77,31 +77,7 @@ main {
         /* Всі інші стилі залишаються незмінними */
     }
     
-    /* .forecast-info {
-        width: 60% !important; /* Примусово робимо однакову ширину 60
-        margin: 0 !important; /* Прибираємо різні відступи 
-        padding: 0 !important; /* Вирівнюємо padding 
-        box-sizing: border-box; /* Щоб padding не впливав на ширину *
-        justify-self: center;
-        background: rgba(255, 255, 255, 0.1) !important;
-        /* Всі інші стилі залишаються незмінними *
-    }
     
-    .forecast-container {
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: block !important;
-        box-sizing: border-box;
-    }
-    
-    .forecast-item {
-        margin-top: 5%;
-        width: 100%;
-        box-sizing: border-box;
-        /* Всі інші стилі залишаються незмінними *
-    } */
-
     .weather-info {
         display: block !important;
         align-items: center !important;
@@ -182,13 +158,25 @@ main {
 .temperature-hourly {
     font-size: 1.2rem;
     color: #f0f7fb;
-    margin: 1px 0;
+    margin: 1%;
+}
+
+.temperature-of-celcius {
+    margin: 3%;
+    font-size: xx-large;
+    font: bold;
 }
 
 .temperature-feels-like {
     font-size: 1.0rem;
     color: #f0f7fb;
     margin: 1px 0;
+    margin-top: 0;
+}
+
+.temperature-description-weather-info {
+    font-size: x-large;
+    margin: 2%
 }
 
 .weather-info {
@@ -689,47 +677,8 @@ main {
   font-weight: 500;
 }
 
-/* ── Адаптивність ── 
+
 @media (max-width: 768px) {
-  .forecast-container {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 8px;
-  }
-}
-
-@media (max-width: 645px) {
-  .forecast-container {
-    grid-template-columns: repeat(4, 1fr);
-    flex-wrap: nowrap;
-    gap: 8px;
-  }
-
-  .forecast-container .forecast-item:nth-child(5) {
-        display: none;
-    }
-}
-
-@media (max-width: 560px) {
-  .forecast-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-
-  .forecast-item {
-    padding: 0.75rem;
-  }
-
-  .forecast-item .temperature {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 360px) {
-  .forecast-container {
-    grid-template-columns: 1fr;
-  }
-} */
- @media (max-width: 768px) {
   .forecast-container {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
